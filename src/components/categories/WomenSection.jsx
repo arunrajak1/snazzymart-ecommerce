@@ -9,7 +9,7 @@ const WomenSection = () => {
   const womensClothing = useSelector((state) => state.products.womensClothing);
   const loading = useSelector((state) => state.products.loading);
   const error = useSelector((state) => state.products.error);
-
+console.log('Arun',womensClothing)
   useEffect(() => {
     if (womensClothing.length === 0) {
       dispatch(fetchProducts());
@@ -36,7 +36,7 @@ const WomenSection = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-10 md:pr-0 md:pl-0 sm:pr-5 pl-5">
           {womensClothing.map((product) => (
-            <div
+            <Link  to={`/products/${product.id}`}
               key={product.id}
               onClick={() => handleClick(product)}
               className="bg-white rounded overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
@@ -62,7 +62,7 @@ const WomenSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
